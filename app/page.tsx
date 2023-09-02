@@ -1,18 +1,12 @@
-"use client"
-
 import Image from 'next/image'
-import { useSession, signIn } from 'next-auth/react'
+import prisma from '@/lib/prisma'
 
-export default function Home() {
-  const session = useSession();
+export default async function Home() {
+  const users = await prisma.user.findMany();
 
   return (
-    
     <main>
-      <pre>
-        {JSON.stringify(session, null, 2)}
-      </pre>
-      <button onClick={() => signIn("github")}>Sign in</button>
+      <pre>{JSON.stringify(users, null, 2)}</pre>
     </main>
   )
 }
