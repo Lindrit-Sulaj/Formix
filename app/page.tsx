@@ -4,7 +4,7 @@ import prisma from '@/lib/prisma'
 async function getForms() {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/forms`);
   if (!res.ok) {
-    throw new Error(`Something went wrong: ${res}`)
+    throw new Error(`Something went wrong: ${res.json()}`)
   }
   return res.json();
 }
