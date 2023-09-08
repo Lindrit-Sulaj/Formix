@@ -10,6 +10,7 @@ import { Button } from './ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar'
 import { Separator } from './ui/separator'
+import { Skeleton } from './ui/skeleton'
 
 export default function Navbar() {
   const user = useAuth();
@@ -40,10 +41,10 @@ export default function Navbar() {
                 </div>
                 <Separator className='mt-2' />
                 <div className='mt-4'>
-                  <Link href="/" className='w-full my-2 block'>
+                  <Link href="/account" className='w-full my-2 block'>
                     <Button variant="outline" className='w-full'><LayoutDashboard size={16} className="mr-1" />Dashboard</Button>
                   </Link>
-                  <Link href="/" className='w-full my-2 block'>
+                  <Link href="/account/settings" className='w-full my-2 block'>
                     <Button variant="outline" className='w-full'><Settings size={16} className='mr-1' /> Settings</Button>
                   </Link>
                 </div>
@@ -54,12 +55,19 @@ export default function Navbar() {
           )}
           {user?.status === "unauthenticated" && (
             <div className="flex gap-1">
-              <Link href="/">
+              <Link href="/signup">
                 <Button variant="link">Sign up</Button>
               </Link>
-              <Link href="/">
+              <Link href="/login">
                 <Button>Log in</Button>
               </Link>
+            </div>
+          )}
+
+          {user?.status === "loading" && (
+            <div className="flex gap-2 items-center">
+              <Skeleton className='w-10 h-10 rounded-full'/>
+              <Skeleton className='h-6 w-24'/>
             </div>
           )}
         </div>

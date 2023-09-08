@@ -4,8 +4,8 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/navbar'
 import AuthProvider from '@/components/auth-provider'
 
-import { Inter } from 'next/font/google'
-const inter = Inter({ subsets: ['latin'] })
+import { DM_Sans } from 'next/font/google'
+const default_font = DM_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={default_font.className}>
         <AuthProvider>
           <Navbar />
           {children}
