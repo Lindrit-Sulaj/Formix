@@ -22,8 +22,6 @@ export const useAuth = () => useContext(ClientContext)
 function ClientProvider({ children }: { children: React.ReactNode }) {
   const { data, status } = useSession();
 
-  console.log(data);
-
   return (
     <ClientContext.Provider value={{
       status,
