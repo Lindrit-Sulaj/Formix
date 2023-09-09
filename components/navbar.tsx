@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useAuth } from './auth-provider'
 import { signOut } from 'next-auth/react'
 
-import { Settings, LayoutDashboard } from 'lucide-react'
+import { Settings, LayoutDashboard, ChevronDown } from 'lucide-react'
 import { Button } from './ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar'
@@ -24,12 +24,13 @@ export default function Navbar() {
 
           {user?.status === "authenticated" && (
             <Popover>
-              <PopoverTrigger className='bg-slate-100 border-solid border-[1px] border-slate-200 flex items-center gap-1 pl-2 pr-4 py-[1px] rounded-full'>
+              <PopoverTrigger className='bg-slate-100 border-solid border-[1px] border-slate-200 flex items-center gap-[2px] pl-2 pr-4 py-[1px] rounded-full'>
                 <Avatar className='flex items-center'>
                   <AvatarImage className='w-8 h-8 rounded-full' src={user.session?.image!} />
                   <AvatarFallback className='bg-zinc-800 text-white w-8 h-8'>{user.session?.name![0]}</AvatarFallback>
                 </Avatar>
                 <span className='text-[15px]'>Account</span>
+                <ChevronDown size={14} />
               </PopoverTrigger>
               <PopoverContent>
                 <div className="flex flex-col items-center">

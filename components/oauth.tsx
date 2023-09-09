@@ -11,12 +11,12 @@ export default function OAuth() {
 
   async function handleLogin(provider: string) {
     setLoading(true);
-    await signIn(provider).then(() => setLoading(false)).finally(() => router.push('/account'));
+    await signIn(provider).then(() => setLoading(false))
   }
 
   return (
     <div className='flex gap-2 flex-col mt-3 w-full'>
-      <Button disabled={loading} onClick={() => handleLogin("github")}>Continue with Github <Github size={19} className='ml-2' /></Button>
+      <Button variant="secondary" disabled={loading} onClick={() => handleLogin("github")}>Continue with Github <Github size={19} className='ml-2' /></Button>
     </div>
   )
 }
